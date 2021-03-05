@@ -1,3 +1,6 @@
+####### Nature as Capital #######
+##### Pset 2 - Qinrui Xiahou #####
+
 # 2. Take a look at the regression results and means
 region_data['watercoeff']
 ## View(region_data[["watercoeff"]])
