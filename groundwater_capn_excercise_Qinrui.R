@@ -162,6 +162,15 @@ View(test)
 
 
 # 11. Inclusive wealth
+## Average price
+pchange1 <- (myWaterSim(myStock = 21.5)$shadowp + myWaterSim(myStock = 20.5)$shadowp)/2
+print(paste("Welfare change from 21.5 to 20.5 = ", (21.5-20.5)*pchange1))
+
+pchange2 <- (myWaterSim(myStock = 21.5)$shadowp + myWaterSim(myStock = 18.5)$shadowp)/2
+print(paste("Welfare change from 21.5 to 18.5 = ", (21.5-18.5)*pchange2))
+
+
+## IW and vfun
 output <- psim(pcoeff = pC,
              stock = 21.5,
              wval = profit(21.5, gw.data),
@@ -178,12 +187,9 @@ myWaterSim(myStock = 21.5)$iw - myWaterSim(myStock = 18.5)$iw
 # 12-14. Adjust taxed corn price and inspect wheat price
 ksdata.alt <- ksdata
 
-ksdata.alt$State$mlogitmeans[14,2] <- 0.9*ksdata.alt$State$mlogitmeans[14,2]
-
-View(ksdata.alt$State$mlogitmeans)
+#View(ksdata.alt$State$mlogitmeans)
 ksdata.alt$State$mlogitmeans[14,2] # corn price
 ksdata.alt$State$mlogitmeans[17,2] # wheat price
-
 
 # 15-22. 10% tax on corn revenue
 ksdata.alt$State$mlogitmeans[14,2] <- 0.9*ksdata.alt$State$mlogitmeans[14,2]
@@ -194,8 +200,8 @@ results <- myWaterSim(myGW.data = gw.data, myQuest11 = TRUE)
 results.alt <- myWaterSim(myGW.data = gw.data.alt, myQuest11 = TRUE)
 
 ## 17. Water withdrawal
-results$wval
-results.alt$wval
+Wwd(21.5, gw.data)
+Wwd(21.5, gw.data.alt)
 
 ## 18. Total acreage planted
 cropFwater(21.5, gw.data)
@@ -263,8 +269,8 @@ results <- myWaterSim(myGW.data = gw.data, myQuest11 = TRUE)
 results.alt2 <- myWaterSim(myGW.data = gw.data.alt2, myQuest11 = TRUE)
 
 ## 17*. Water withdrawal
-results$wval
-results.alt2$wval
+Wwd(21.5, gw.data)
+Wwd(21.5, gw.data.alt2)
 
 ## 18*. Total acreage planted
 cropFwater(21.5, gw.data)
